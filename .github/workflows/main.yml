@@ -1,0 +1,14 @@
+name: Github Actions feirinha_backend
+run-name: ${{ github.actor }} is running GitHub Actions 🚀
+on: 
+  push:
+    branches: 
+      - master
+  pull_request:
+    branches: 
+      - master
+jobs:
+  Run-Test:
+    runs-on: ubuntu-lates
+    steps:
+    - run: echo "test!!!"
