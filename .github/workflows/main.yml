@@ -1,5 +1,5 @@
 name: Github Actions feirinha_backend
-run-name: ${{ github.actor }} is running GitHub Actions 🚀
+run-name: ${{ github.actor }} is running Deploying feirinha backend 🚀
 on: 
   push:
     branches: 
@@ -18,15 +18,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-
-      - name: Cache Node.js modules
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
+          cache: 'npm'
       - name: Install Dependencies
         run: npm install
 
@@ -41,12 +33,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-
-      - name: Restore Node.js modules
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-
+          cache: 'npm'
       - name: Run Tests
         run: npm run test
