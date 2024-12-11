@@ -7,6 +7,10 @@ on:
   pull_request:
     branches: 
       - master
+env:
+  PROJECT_ID: ${{secrets.PROJECT_ID}} # TODO: update Google Cloud project id
+  SERVICE: ${{secrets.SERVICE_NAME}} # TODO: update Cloud Run service name
+  REGION: ${{secrets.REGION}} # TODO: update Cloud Run service region
 jobs:
   Build:
     runs-on: ubuntu-latest
@@ -38,3 +42,28 @@ jobs:
         run: npm install
       - name: Run Tests
         run: npm run test
+  Deploy:
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Google Auth
+        id: auth
+        uses: 'google-github-actions/auth@v0'
+        with:
+          credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+      - name: Deploy to Cloud Run
+        id: deploy
+        uses: google-github-actions/deploy-cloudrun@v0
+        with:
+          service: ${{ env.SERVICE }}
+          region: ${{ env.REGION }}
+          source: ./
+
+
+      - name: Show Output
+        run: echo ${{ steps.deploy.outputs.url }}
