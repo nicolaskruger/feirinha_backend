@@ -41,7 +41,7 @@ jobs:
       - name: Install Dependencies
         run: npm install
       - name: Run Tests
-        run: npm run test
+        run: npm run test:cov
   Deploy:
     needs: Run-Test
     permissions:
