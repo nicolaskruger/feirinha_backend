@@ -8,6 +8,8 @@ on:
     branches: 
       - master
 env:
+  name: production
+  url: https://github.com/nicolaskruger/feirinha_backend/settings/environments/4882507790/edit
   PROJECT_ID: ${{secrets.PROJECT_ID}} # TODO: update Google Cloud project id
   SERVICE: ${{secrets.SERVICE_NAME}} # TODO: update Cloud Run service name
   REGION: ${{secrets.REGION}} # TODO: update Cloud Run service region
