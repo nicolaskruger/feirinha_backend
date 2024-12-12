@@ -69,6 +69,10 @@
       "global": {
         "lines": 80
       }
-    }
+    },
+    "collectCoverageFrom": [
+      "**/*service.ts",
+      "**/*controller.ts"
+    ]
   }
 }
