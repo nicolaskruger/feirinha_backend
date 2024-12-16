@@ -2,8 +2,6 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
-import { RoleRepository } from './repository/role/role.repository';
-import { Role, RoleSchema } from './repository/schema/role';
 import { ConfigModule } from '@nestjs/config';
 import { dbName } from './constants/db_name';
 import { RoleModule } from './repository/module/role.module';
