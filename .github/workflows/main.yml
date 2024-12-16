@@ -59,10 +59,10 @@ jobs:
         with:
           credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
       - name: Deploy to Cloud Run
-        env: 
-          DATABASE_URL:  ${{secrets.DATABASE_URL}}
         id: deploy
         uses: google-github-actions/deploy-cloudrun@v2
+        env: 
+          DATABASE_URL:  ${{secrets.DATABASE_URL}}
         with:
           service: ${{ env.SERVICE }}
           region: ${{ env.REGION }}
