@@ -61,9 +61,9 @@ jobs:
       - name: Deploy to Cloud Run
         id: deploy
         uses: google-github-actions/deploy-cloudrun@v2
-        env: 
-          DATABASE_URL:  ${{secrets.DATABASE_URL}}
         with:
+          secrets: |-
+            DATABASE_URL:  ${{secrets.DATABASE_URL}}
           env_vars: |-
             DATABASE_URL:  ${{secrets.DATABASE_URL}}
           service: ${{ env.SERVICE }}
