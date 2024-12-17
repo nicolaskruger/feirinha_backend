@@ -64,6 +64,8 @@ jobs:
         env: 
           DATABASE_URL:  ${{secrets.DATABASE_URL}}
         with:
+          env_vars: |-
+            DATABASE_URL:  ${{secrets.DATABASE_URL}}
           service: ${{ env.SERVICE }}
           region: ${{ env.REGION }}
           source: ./
